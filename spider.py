@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import numpy as np
 
@@ -14,9 +15,11 @@ if __name__ == '__main__':
 
     parser.add_argument('--url', type=str, help='URL to scrape')
     parser.add_argument('--page_count', type=int, default=1, help='Number of pages to scrape [Number of posts saved divided by 20]')
-    parser.add_argument('--output', type=str, default='output.csv', help='Output file')
+    parser.add_argument('--output', type=str, default='./outputs/output.csv', help='Output file')
 
     args = parser.parse_args()
+
+    os.makedirs(os.path.dirname(args.output), exist_ok=True)
 
     driver = get_local_safe_setup()
 
